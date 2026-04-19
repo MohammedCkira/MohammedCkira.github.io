@@ -22,16 +22,45 @@
       margin: 0;
       padding: 0;
       font-family: 'Cairo', sans-serif;
-      background: #0d1b2a;
+      background: #000;
       color: #fff;
       text-align: center;
+      overflow-x: hidden;
     }
+    
+    #stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
     .container {
       max-width: 500px;
       margin: auto;
       padding: 20px;
       animation: fadeInUp 1s ease-out;
     }
+    
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto 20px auto;
+      border: 3px solid #e63946;
+      object-fit: cover;
+      transition: 0.6s ease-in-out;
+      box-shadow: 0 0 20px rgba(230, 57, 70, 0.5);
+    }
+
+    .profile-img:hover {
+      transform: rotate(360deg) scale(1.1);
+      box-shadow: 0 0 35px rgba(230, 57, 70, 0.8);
+    }
+    
     h1 {
       font-size: 2.5em;
       color: #e63946;
@@ -43,6 +72,24 @@
       font-size: 1.2em;
       margin: 5px 0 25px;
       animation: fadeInUp 1s ease-out 0.4s both;
+    }
+    .social-icons {
+      animation: fadeInUp 1s ease-out 0.5s both;
+      margin: 20px 0;
+    }
+    .social-icons a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      padding: 10px 20px;
+      border: 2px solid #e63946;
+      border-radius: 8px;
+      display: inline-block;
+      transition: 0.3s;
+    }
+    .social-icons a:hover {
+      background: #e63946;
+      transform: translateY(-3px);
     }
     h2 {
       color: #f1faee;
@@ -67,75 +114,93 @@
       animation: fadeInUp 1s ease-out 1s both;
       display: block;
       text-decoration: none;
+      transition: 0.3s;
     }
-    .profile-img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #e63946;
-        display: block;
-  margin: 0 auto 20px auto;
-  transition: 0.6s ease-in-out;
-  box-shadow: 0 0 20px rgba(230, 57, 70, 0.5);
-}
-
-.profile-img:hover {
-  transform: rotate(360deg) scale(1.1);
-  box-shadow: 0 0 35px rgba(230, 57, 70, 0.8);
-}
-       .social-icons {
-     margin-top: 25px;
-     display: flex;
-     gap: 15px;
-     justify-content: center;
-     flex-wrap: wrap;
-   }
-
-   .social-icons a {
-     color: #fff;
-     text-decoration: none;
-     background: #1a1a1a;
-     padding: 10px 15px;
-     border-radius: 8px;
-     border: 1px solid #333;
-     transition: 0.3s;
-   }
-
-   .social-icons a:hover {
-     background: #e63946;
-     border-color: #e63946;
-     transform: translateY(-3px);
+    .contact:hover {
+      background: #c1121f;
+      transform: scale(1.05);
+    }
+    .visitor-counter {
+      text-align: center;
+      color: #888;
+      font-size: 14px;
+      margin-top: 40px;
+      padding-bottom: 20px;
+      animation: fadeInUp 1s ease-out 1.2s both;
+    }
+    #count {
+      color: #e63946;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
+  <canvas id="stars"></canvas>
   <div class="container">
-       <img src="kira.jpg" alt="Mohammed Kira" class="profile-img">
+    <img src="kira.jpg" alt="Mohammed Kira" class="profile-img">
     <h1>mohamad-kira</h1>
+    <p class="subtitle">صانع العدالة . . بالكود 💀</p>
+    
     <div class="social-icons">
-  <a href="#" target="_blank">فيسبوك</a>
-  <a href="https://www.instagram.com/mohamed3955275" target="_blank">انستا</a>
-  <a href="https://wa.me/201060629645" target="_blank">واتساب</a>
-  <a href="https://github.com/MohammedCkira" target="_blank">جيتهاب</a>
+      <a href="#" target="_blank">فيسبوك</a>
+      <a href="https://www.instagram.com/mohamed3955275" target="_blank">انستا</a>
+      <a href="https://wa.me/201060629645" target="_blank">واتساب</a>
+      <a href="https://github.com/MohammedCkira" target="_blank">جيتهاب</a>
     </div>
-    <p class="subtitle">صانع العدالة... بالكود 💀</p>
 
     <h2>مين أنا؟</h2>
     <p>
-      اسمي محمد، 17 سنة من الشرقية.<br>
-      بحب التكنولوجيا والبرمجة وعايز أعمل مواقع تفرق مع الناس.
+      .اسمي محمد، 17 سنة من الشرقية <br>
+      .بحب التكنولوجيا والبرمجة وعايز أعمل مواقع تفرق مع الناس
     </p>
-
-    <h2>بشتغل على إيه دلوقتي؟</h2>
-    <p>
-      عشان أعمل موقعي بإيدي من غير قوالب جاهزة بتعلم HTML + CSS
-    </p>
-
-    <h2>تواصل معايا:</h2>
-    <a href="https://wa.me/201060629645" class="contact" target="_blank">
-      واتساب: 01060629645
-    </a>
+    
+    <a href="https://wa.me/201060629645" class="contact" target="_blank">كلمني واتساب</a>
+    
+    <div class="visitor-counter">
+      👁️ <span id="count">0</span> زيارة
+    </div>
   </div>
+
+<script>
+const canvas = document.getElementById('stars');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let stars = [];
+for(let i = 0; i < 150; i++){
+  stars.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    radius: Math.random() * 1.5,
+    speed: Math.random() * 0.5
+  });
+}
+
+function drawStars(){
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#e63946';
+  stars.forEach(star => {
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+    ctx.fill();
+    star.y += star.speed;
+    if(star.y > canvas.height) star.y = 0;
+  });
+  requestAnimationFrame(drawStars);
+}
+drawStars();
+
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+// عداد الزوار
+let visits = localStorage.getItem('visits');
+visits = visits ? parseInt(visits) + 1 : 1;
+localStorage.setItem('visits', visits);
+document.getElementById('count').textContent = visits;
+</script>
 </body>
 </html>
