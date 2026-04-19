@@ -72,11 +72,18 @@
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  display: block;
-  margin: 0 auto 20px auto;
+  object-fit: cover;
   border: 3px solid #e63946;
-  animation: fadeInUp 1s ease-out;
-    }
+        display: block;
+  margin: 0 auto 20px auto;
+  transition: 0.6s ease-in-out;
+  box-shadow: 0 0 20px rgba(230, 57, 70, 0.5);
+}
+
+.profile-img:hover {
+  transform: rotate(360deg) scale(1.1);
+  box-shadow: 0 0 35px rgba(230, 57, 70, 0.8);
+}
        .social-icons {
      margin-top: 25px;
      display: flex;
