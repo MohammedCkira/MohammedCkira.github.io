@@ -5,239 +5,229 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mohamad Kira</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    body {
+    * {
       margin: 0;
       padding: 0;
-      font-family: 'Cairo', sans-serif;
-      background: #000;
-      color: #fff;
-      text-align: center;
-      overflow-x: hidden;
+      box-sizing: border-box;
     }
-    
+    body {
+      background: #0a0a0a;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
     #stars {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: -1;
+      z-index: 0;
     }
-
     .container {
-      max-width: 500px;
-      margin: auto;
-      padding: 20px;
-      animation: fadeInUp 1s ease-out;
+      text-align: center;
+      z-index: 1;
+      animation: fadeIn 2s ease;
     }
-    
-    .profile-img {
-      width: 150px;
-      height: 150px;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .profile-pic {
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
-      display: block;
-      margin: 0 auto 20px auto;
       border: 3px solid #e63946;
+      box-shadow: 0 0 25px rgba(230, 57, 70, 0.6);
+      animation: spin 8s linear infinite;
+      margin: 0 auto 20px;
       object-fit: cover;
-      transition: 0.6s ease-in-out;
-      box-shadow: 0 0 20px rgba(230, 57, 70, 0.5);
     }
-
-    .profile-img:hover {
-      transform: rotate(360deg) scale(1.1);
-      box-shadow: 0 0 35px rgba(230, 57, 70, 0.8);
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
-    
     h1 {
-      font-size: 2.5em;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      height: 50px;
+    }
+    .cursor {
+      animation: blink 1s infinite;
       color: #e63946;
-      margin: 0;
-      animation: fadeInUp 1s ease-out 0.2s both;
+      font-weight: 100;
     }
-    .subtitle {
-      color: #a8dadc;
-      font-size: 1.2em;
-      margin: 5px 0 25px;
-      animation: fadeInUp 1s ease-out 0.4s both;
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
     }
-    .social-icons {
-      animation: fadeInUp 1s ease-out 0.5s both;
-      margin: 20px 0;
+    .bio {
+      color: #aaa;
+      margin-bottom: 30px;
+      font-size: 1.1rem;
     }
-    .social-icons a {
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .links a {
+      background: #1a1a1a;
       color: #fff;
       text-decoration: none;
-      margin: 0 10px;
-      padding: 10px 20px;
-      border: 2px solid #e63946;
+      padding: 12px 30px;
+      border: 1px solid #e63946;
       border-radius: 8px;
-      display: inline-block;
       transition: 0.3s;
+      box-shadow: 0 0 10px rgba(230, 57, 70, 0.3);
     }
-    .social-icons a:hover {
+    .links a:hover {
       background: #e63946;
+      box-shadow: 0 0 20px rgba(230, 57, 70, 0.8);
       transform: translateY(-3px);
     }
-    h2 {
-      color: #f1faee;
-      border-bottom: 1px solid #333;
-      padding-bottom: 10px;
-      margin-top: 25px;
-      animation: fadeInUp 1s ease-out 0.6s both;
-    }
-    p {
-      font-size: 1.1em;
-      line-height: 1.8;
-      animation: fadeInUp 1s ease-out 0.8s both;
-    }
-    .contact {
-      background: #e63946;
-      color: white;
-      padding: 12px;
-      border-radius: 8px;
-      font-weight: bold;
-      font-size: 1.2em;
-      margin-top: 25px;
-      animation: fadeInUp 1s ease-out 1s both;
-      display: block;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-    .contact:hover {
-      background: #c1121f;
-      transform: scale(1.05);
-    }
-    .visitor-counter {
-      text-align: center;
-      color: #888;
-      font-size: 14px;
-      margin-top: 40px;
-      padding-bottom: 20px;
-      animation: fadeInUp 1s ease-out 1.2s both;
-    }
-    #count {
-      color: #e63946;
-      font-weight: bold;
+    .counter {
+      color: #666;
+      font-size: 0.9rem;
     }
     .music-btn {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  width: 50px;
-  height: 50px;
-  background: #e63946;
-  border: none;
-  border-radius: 50%;
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-  box-shadow: 0 0 15px rgba(230, 57, 70, 0.7);
-  transition: 0.3s;
-  z-index: 100;
-}
-.music-btn:hover {
-  transform: scale(1.1);
-}
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 50px;
+      height: 50px;
+      background: #e63946;
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(230, 57, 70, 0.7);
+      transition: 0.3s;
+      z-index: 100;
+    }
+    .music-btn:hover {
+      transform: scale(1.1);
+    }
   </style>
 </head>
 <body>
   <canvas id="stars"></canvas>
+  
   <audio id="bgMusic" loop>
-  <source src="Albumaty.Com_XXXTENTACION_MOONLIGHT.mp3" type="audio/mpeg">
-</audio>
-<button class="music-btn" onclick="toggleMusic()">▶️</button>
+    <source src="Albumaty.Com_XXXTENTACION_MOONLIGHT.mp3" type="audio/mpeg">
+  </audio>
+  
+  <audio id="clickSound">
+    <source src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" type="audio/mpeg">
+  </audio>
+  
+  <button class="music-btn" onclick="toggleMusic()">▶️</button>
+
   <div class="container">
-    <img src="kira.jpg" alt="Mohammed Kira" class="profile-img">
-    <h1>mohamad-kira</h1>
-    <p class="subtitle">صانع العدالة . . بالكود 💀</p>
+    <img src="kira.jpg" alt="Mohamad Kira" class="profile-pic">
+    <h1><span id="typed-name"></span><span class="cursor">|</span></h1>
+    <p class="bio">20 yo</p>
     
-    <div class="social-icons">
-      <a href="#" target="_blank">فيسبوك</a>
-      <a href="https://www.instagram.com/mohamed3955275" target="_blank">انستا</a>
-      <a href="https://wa.me/201060629645" target="_blank">واتساب</a>
-      <a href="https://github.com/MohammedCkira" target="_blank">جيتهاب</a>
+    <div class="links">
+      <a href="https://instagram.com/ckira1_" target="_blank">انستا</a>
+      <a href="https://wa.me/201027814410" target="_blank" onclick="playClick()">واتساب</a>
+      <a href="https://github.com/MohammedCkira" target="_blank">جيت هاب</a>
     </div>
 
-    <h2>مين أنا؟</h2>
-    <p>
-      .اسمي محمد، 17 سنة من الشرقية <br>
-      .بحب التكنولوجيا والبرمجة وعايز أعمل مواقع تفرق مع الناس
-    </p>
-    
-    <a href="https://wa.me/201060629645" class="contact" target="_blank">كلمني واتساب</a>
-    
-    <div class="visitor-counter">
-      👁️ <span id="count">0</span> زيارة
+    <div class="counter">
+      <span id="visitCount">0</span> :عدد الزيارات
     </div>
   </div>
 
-<script>
-const canvas = document.getElementById('stars');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+  <script>
+    // كتابة الاسم
+    const nameText = "Mohamad Kira";
+    let i = 0;
+    const speed = 150;
 
-let stars = [];
-for(let i = 0; i < 150; i++){
-  stars.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    radius: Math.random() * 1.5,
-    speed: Math.random() * 0.5
-  });
-}
+    function typeWriter() {
+      if (i < nameText.length) {
+        document.getElementById("typed-name").innerHTML += nameText.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    }
 
-function drawStars(){
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = '#e63946';
-  stars.forEach(star => {
-    ctx.beginPath();
-    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-    ctx.fill();
-    star.y += star.speed;
-    if(star.y > canvas.height) star.y = 0;
-  });
-  requestAnimationFrame(drawStars);
-}
-drawStars();
+    window.addEventListener('load', typeWriter);
 
-window.addEventListener('resize', () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-});
+    // صوت الكليك
+    function playClick() {
+      const click = document.getElementById('clickSound');
+      click.volume = 0.4;
+      click.play();
+    }
 
-// عداد الزوار
-let visits = localStorage.getItem('visits');
-visits = visits ? parseInt(visits) + 1 : 1;
-localStorage.setItem('visits', visits);
-document.getElementById('count').textContent = visits;
-  const music = document.getElementById('bgMusic');
-const musicBtn = document.querySelector('.music-btn');
-let isPlaying = false;
+    // الموسيقى
+    const music = document.getElementById('bgMusic');
+    const musicBtn = document.querySelector('.music-btn');
+    let isPlaying = false;
 
-function toggleMusic() {
-  if (isPlaying) {
-    music.pause();
-    musicBtn.textContent = '▶️';
-  } else {
-    music.play();
-    musicBtn.textContent = '⏸️';
-  }
-  isPlaying = !isPlaying;
-  }
-</script>
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+        musicBtn.textContent = '▶️';
+      } else {
+        music.play();
+        musicBtn.textContent = '⏸️';
+      }
+      isPlaying = !isPlaying;
+    }
+
+    // النجوم
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let stars = [];
+    for(let i = 0; i < 100; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 1.5,
+        speed: Math.random() * 0.5
+      });
+    }
+
+    function animateStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#e63946';
+      stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fill();
+        star.y += star.speed;
+        if(star.y > canvas.height) {
+          star.y = 0;
+          star.x = Math.random() * canvas.width;
+        }
+      });
+      requestAnimationFrame(animateStars);
+    }
+    animateStars();
+
+    // عداد الزيارات
+    let count = localStorage.getItem('visitCount') || 0;
+    count++;
+    localStorage.setItem('visitCount', count);
+    document.getElementById('visitCount').textContent = count;
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
 </body>
 </html>
