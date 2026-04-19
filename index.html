@@ -132,10 +132,33 @@
       color: #e63946;
       font-weight: bold;
     }
+    .music-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  background: #e63946;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(230, 57, 70, 0.7);
+  transition: 0.3s;
+  z-index: 100;
+}
+.music-btn:hover {
+  transform: scale(1.1);
+}
   </style>
 </head>
 <body>
   <canvas id="stars"></canvas>
+  <audio id="bgMusic" loop>
+  <source src="Albumaty.Com_XXXTENTACION_MOONLIGHT.mp3" type="audio/mpeg">
+</audio>
+<button class="music-btn" onclick="toggleMusic()">▶️</button>
   <div class="container">
     <img src="kira.jpg" alt="Mohammed Kira" class="profile-img">
     <h1>mohamad-kira</h1>
@@ -201,6 +224,20 @@ let visits = localStorage.getItem('visits');
 visits = visits ? parseInt(visits) + 1 : 1;
 localStorage.setItem('visits', visits);
 document.getElementById('count').textContent = visits;
+  const music = document.getElementById('bgMusic');
+const musicBtn = document.querySelector('.music-btn');
+let isPlaying = false;
+
+function toggleMusic() {
+  if (isPlaying) {
+    music.pause();
+    musicBtn.textContent = '▶️';
+  } else {
+    music.play();
+    musicBtn.textContent = '⏸️';
+  }
+  isPlaying = !isPlaying;
+  }
 </script>
 </body>
 </html>
